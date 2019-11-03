@@ -54,7 +54,7 @@ public class QueueTest {
     public void enqueue() {
         Queue newQ = new Queue();
 
-        for(int i = 0; i < 9; i++){
+        for (int i = 0; i < 9; i++) {
             newQ.enqueue(i);
         }
 

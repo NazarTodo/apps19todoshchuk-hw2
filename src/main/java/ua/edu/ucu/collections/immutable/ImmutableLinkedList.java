@@ -310,10 +310,9 @@ public class ImmutableLinkedList implements ImmutableList {
 
     public ImmutableLinkedList removeLast() {
         ImmutableLinkedList newLst = copyLinkedList();
-        if (newLst.len == 1){
+        if (newLst.len == 1) {
             newLst.head = null;
-        }
-        else if (!isEmpty()) {
+        } else if (!isEmpty()) {
             Node curr = newLst.head;
             while (curr.next.next != null) {
                 curr = curr.next;
