@@ -1,8 +1,5 @@
 package ua.edu.ucu.collections.immutable;
 
-import org.w3c.dom.ls.LSOutput;
-
-import java.util.Arrays;
 
 public class ImmutableLinkedList implements ImmutableList {
     private Node head;
@@ -345,28 +342,30 @@ public class ImmutableLinkedList implements ImmutableList {
 
     @Override
     public String toString() {
-        String str = "";
+        StringBuilder buf = new StringBuilder();
         if (!isEmpty()) {
             Node curr = this.head;
 
             int i = 0;
             while (curr != null) {
                 if (i != size() - 1) {
-                    str += curr.data + ", ";
+                    buf.append(curr.data);
+                    buf.append(", ");
                 } else {
-                    str += curr.data;
+                    buf.append(curr.data);
                 }
                 curr = curr.next;
                 i++;
             }
 
         }
-        return str;
+
+        return buf.toString();
     }
 
-    public class Node {
+    private static class Node {
+        private Node next;
         private Object data;
-        Node next;
 
         private Node(Object el, Node next) {
             this.data = el;

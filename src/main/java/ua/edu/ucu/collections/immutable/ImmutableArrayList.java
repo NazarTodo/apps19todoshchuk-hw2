@@ -125,15 +125,17 @@ public class ImmutableArrayList implements ImmutableList {
 
     @Override
     public String toString() {
-        String str = "";
+        StringBuilder buf = new StringBuilder();
         for (int i = 0; i < this.lst.length; i++) {
             if (i < this.lst.length - 1) {
-                str += this.lst[i] + ", ";
+                buf.append(this.lst[i]);
+                buf.append(", ");
             } else {
-                str += this.lst[i];
+                buf.append(this.lst[i]);
             }
         }
-        return str;
+
+        return buf.toString();
     }
 
 }
