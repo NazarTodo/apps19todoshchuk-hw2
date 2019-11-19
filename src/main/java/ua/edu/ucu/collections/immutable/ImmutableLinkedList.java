@@ -37,7 +37,6 @@ public class ImmutableLinkedList implements ImmutableList {
         }
         newLst.len += 1;
 
-
         return newLst;
     }
 
@@ -249,7 +248,6 @@ public class ImmutableLinkedList implements ImmutableList {
 
         } else {
             newLst.head = new Node(e, null);
-
         }
         newLst.len += 1;
         return newLst;
@@ -292,9 +290,7 @@ public class ImmutableLinkedList implements ImmutableList {
             }
             return curr.data;
         }
-
         return -1;
-
 
     }
 
@@ -303,7 +299,6 @@ public class ImmutableLinkedList implements ImmutableList {
         if (!isEmpty()) {
             newLst.head = newLst.head.next;
             newLst.len -= 1;
-
         }
         return newLst;
     }
@@ -325,6 +320,7 @@ public class ImmutableLinkedList implements ImmutableList {
 
     public ImmutableLinkedList copyLinkedList() {
         ImmutableLinkedList newLst = new ImmutableLinkedList();
+//        method to copy the existing list
         if (!isEmpty()) {
 
             Object[] lst = this.toArray();
