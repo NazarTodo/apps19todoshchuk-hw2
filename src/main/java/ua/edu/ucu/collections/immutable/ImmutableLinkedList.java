@@ -11,7 +11,7 @@ public class ImmutableLinkedList implements ImmutableList {
     }
 
     private void checkIndex(int index) {
-        if (index < 0 || index >= this.len) {
+        if (index < 0 || index > this.len) {
 
             throw new IndexOutOfBoundsException();
 
@@ -19,7 +19,7 @@ public class ImmutableLinkedList implements ImmutableList {
     }
 
     @Override
-    public ImmutableList add(Object e) {
+    public ImmutableLinkedList add(Object e) {
 
         ImmutableLinkedList newLst = copyLinkedList();
 
@@ -42,7 +42,7 @@ public class ImmutableLinkedList implements ImmutableList {
     }
 
     @Override
-    public ImmutableList add(int index, Object e) {
+    public ImmutableLinkedList add(int index, Object e) {
         checkIndex(index);
         ImmutableLinkedList newLst = copyLinkedList();
 
@@ -66,7 +66,7 @@ public class ImmutableLinkedList implements ImmutableList {
     }
 
     @Override
-    public ImmutableList addAll(Object[] c) {
+    public ImmutableLinkedList addAll(Object[] c) {
         ImmutableLinkedList newLst = copyLinkedList();
         int ind = 0;
         if (isEmpty()) {
@@ -89,7 +89,7 @@ public class ImmutableLinkedList implements ImmutableList {
     }
 
     @Override
-    public ImmutableList addAll(int index, Object[] c) {
+    public ImmutableLinkedList addAll(int index, Object[] c) {
         checkIndex(index);
         ImmutableLinkedList newLst = copyLinkedList();
         if (index == 0) {
@@ -148,15 +148,18 @@ public class ImmutableLinkedList implements ImmutableList {
     }
 
     @Override
-    public ImmutableList remove(int index) {
+    public ImmutableLinkedList remove(int index) {
         checkIndex(index);
         ImmutableLinkedList newLst = copyLinkedList();
         Node curr = newLst.head;
 //        at which position we are now
         int counter = 0;
-//        while to reach the position to insert in
+//        while to reach the position to remove from
         while (counter < index - 1) {
             curr = curr.next;
+            counter += 1;
+        }
+        if (index == 1) {
             counter += 1;
         }
         if (counter == 0) {
@@ -169,7 +172,7 @@ public class ImmutableLinkedList implements ImmutableList {
     }
 
     @Override
-    public ImmutableList set(int index, Object e) {
+    public ImmutableLinkedList set(int index, Object e) {
         checkIndex(index);
         ImmutableLinkedList newLst = copyLinkedList();
         Node curr = newLst.head;
@@ -190,7 +193,7 @@ public class ImmutableLinkedList implements ImmutableList {
         Node curr = this.head;
         int ind = 0;
         while (curr != null) {
-            if (curr.data == e) {
+            if (curr.data.equals(e)) {
                 return ind;
             }
             ind++;
@@ -205,7 +208,7 @@ public class ImmutableLinkedList implements ImmutableList {
     }
 
     @Override
-    public ImmutableList clear() {
+    public ImmutableLinkedList clear() {
         ImmutableLinkedList newLst = copyLinkedList();
         newLst.head = null;
         newLst.len = 0;
